@@ -1,1 +1,1 @@
-# lunar tail co
+# Lunar Tail Co
