@@ -1,600 +1,603 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lunar Tail Co - Elite Fursuit & Cosplay Creator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <title>Rota 702 • Padel, Beach Tennis & Lifestyle</title>
+    <!-- Importando a Fonte Inter do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ================= VARIÁVEIS E RESET ================= */
+        :root {
+            --bg-main: #ffffff;
+            --bg-alt: #f5f5f7;
+            --text-main: #1d1d1f;
+            --text-muted: #6e6e73;
+            /* Usando um Azul Esportivo que remete ao céu e à piscina da Rota 702 */
+            --accent: #0077b6; 
+            --accent-hover: #005f8c;
+            --border-light: #d2d2d7;
+            --border-radius-card: 20px;
+            --border-radius-btn: 999px;
+            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.04);
+            --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* BANNER DE DESENVOLVIMENTO / EM CONSTRUÇÃO */
-        .dev-banner {
-            background: linear-gradient(90deg, #e91e63, #00ffcc, #ff9800);
-            color: #000;
-            text-align: center;
-            padding: 8px 10px;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 2000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        /* SYSTEMA DE TEMAS DINÂMICOS (ESTILO HEKSEL) */
-        :root[data-theme="dark"] {
-            --bg-main: #0a0a0c;
-            --bg-card: rgba(20, 20, 25, 0.7);
-            --border-glow: rgba(233, 30, 99, 0.2);
-            --text-main: #ffffff;
-            --text-muted: #a0a0aa;
-            --accent: #e91e63;
-            --accent-glow: rgba(233, 30, 99, 0.6);
-            --navbar-bg: rgba(10, 10, 12, 0.8);
-        }
-
-        :root[data-theme="light"] {
-            --bg-main: #f8f9fa;
-            --bg-card: rgba(255, 255, 255, 0.85);
-            --border-glow: rgba(0, 0, 0, 0.1);
-            --text-main: #1a1a1a;
-            --text-muted: #666666;
-            --accent: #d81b60;
-            --accent-glow: rgba(216, 27, 96, 0.3);
-            --navbar-bg: rgba(248, 249, 250, 0.85);
-        }
-
-        :root[data-theme="rainbow"] {
-            --bg-main: #0f0c20;
-            --bg-card: rgba(15, 12, 32, 0.75);
-            --border-glow: rgba(255, 255, 255, 0.2);
-            --text-main: #ffffff;
-            --text-muted: #e0e0e0;
-            --accent: #00ffcc;
-            --accent-glow: rgba(0, 255, 204, 0.8);
-            --navbar-bg: rgba(15, 12, 32, 0.9);
-            background: linear-gradient(124deg, #1f0033, #001a33, #00331a, #333300, #330000);
-            background-size: 1000% 1000%;
-            animation: rainbowAnimation 15s ease infinite;
-        }
-
-        @keyframes rainbowAnimation {
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-main);
             background-color: var(--bg-main);
-            transition: all 0.4s ease;
-            overflow-x: hidden;
-            padding-top: 31px; /* Espaço para o banner não cobrir o topo */
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* NAVBAR & SWITCHER PRO */
+        /* ================= UTILITÁRIOS ================= */
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 48px auto;
+        }
+
+        /* ================= BOTÕES ================= */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--bg-main);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+            border-radius: var(--border-radius-btn);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: var(--text-main);
+            color: #fff;
+        }
+
+        /* ================= HEADER & HERO ================= */
         header {
-            position: fixed;
-            top: 31px; /* Alinhado logo abaixo do banner */
-            left: 0;
-            width: 100%;
-            padding: 20px 40px;
-            background: var(--navbar-bg);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
+            padding: 24px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: top 0.4s ease;
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: 900;
+        .logo-img {
+            height: 50px; 
+            width: auto;
+            display: block;
+        }
+        
+        .logo-text {
+            font-weight: 700;
             font-size: 1.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
         }
 
-        /* SWITCHER DE TEMAS HEKSEL STYLE */
-        .theme-switcher {
-            display: flex;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 5px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        #hero {
+            padding: 100px 0 140px 0;
+            text-align: center;
         }
 
-        .theme-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            padding: 8px 16px;
-            font-size: 0.85rem;
+        #hero h1 {
+            font-size: 3.5rem;
             font-weight: 600;
-            cursor: pointer;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
         }
 
-        .theme-btn.active {
+        #hero h1 span {
+            color: var(--accent);
+        }
+
+        #hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* ================= HISTÓRIA ================= */
+        #historia {
+            background-color: var(--bg-alt);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        #historia .container {
+            max-width: 800px;
+        }
+
+        #historia p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+        }
+
+        /* ================= O COMPLEXO (GRID) ================= */
+        .grid-complexo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .card-complexo {
+            background: var(--bg-alt);
+            padding: 40px;
+            border-radius: var(--border-radius-card);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+        }
+
+        .card-complexo:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .card-complexo h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .card-complexo p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: #e8e8ed;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        /* ================= FORMULÁRIO ROTA 702 ================= */
+        #formulario {
+            padding: 80px 0;
+        }
+
+        .form-wrapper {
+            background: var(--bg-main);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* Progresso */
+        .step-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .step-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-light);
+            transition: background 0.3s ease;
+        }
+
+        .step-dot.active {
             background: var(--accent);
-            color: #fff;
-            box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
+        .step-dot.done {
+            background: var(--text-main);
+        }
+
+        /* Etapas */
+        .form-step {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-step h3 {
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .form-step > p {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        /* Chips de Redes Sociais (Step 1) */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .social-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .social-option input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .social-option label {
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 120px 20px 60px 20px;
-            background: radial-gradient(circle at center, rgba(233,30,99,0.05) 0%, transparent 70%);
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4.5rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-            line-height: 1.1;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        /* GALERIA DE PORTFÓLIO PROFISSIONAL */
-        .section-title {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin: 80px 0 40px 0;
-            letter-spacing: 1px;
-        }
-
-        .portfolio-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
             justify-content: center;
-        }
-
-        .portfolio-card {
-            background: var(--bg-card);
+            padding: 24px 12px;
+            border: 2px solid var(--border-light);
             border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border-glow);
-            backdrop-filter: blur(12px);
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: var(--bg-alt);
+            transition: all 0.2s ease;
+            text-align: center;
+            font-weight: 500;
+            cursor: pointer;
         }
 
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px var(--accent-glow);
+        .social-option input:checked + label {
+            border-color: var(--accent);
+            background: #f0f7ff;
         }
 
-        .image-container {
-            width: 100%;
-            height: 380px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-card:hover .image-container img {
-            transform: scale(1.06);
-        }
-
-        .card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 25px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
-            color: #fff;
-        }
-
-        .card-overlay h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-        }
-
-        .card-overlay p {
+        .social-option label span {
+            margin-top: 8px;
             font-size: 0.85rem;
-            color: #ff69b4;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
+            color: var(--text-main);
         }
 
-        /* FORMULÁRIO E FILA DE PRODUÇÃO */
-        .dashboard-section {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+        .social-option label .emoji-icon {
+            font-size: 2.4rem;
         }
 
-        @media (max-width: 968px) {
-            .dashboard-section { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3rem; }
+        /* Inputs (Step 2 e 3) */
+        .input-group {
+            margin-bottom: 24px;
         }
 
-        .luxury-box {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
-            padding: 40px;
-            border-radius: 24px;
-            backdrop-filter: blur(12px);
-        }
-
-        .luxury-box h2 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
+        .input-group label {
             display: block;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             margin-bottom: 8px;
+            font-size: 0.95rem;
             color: var(--text-muted);
         }
 
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 14px;
-            background: rgba(0, 0, 0, 0.15);
-            border: 1px solid var(--border-glow);
-            border-radius: 8px;
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .btn-submit {
+        .input-group input {
             width: 100%;
             padding: 16px;
-            background: var(--accent);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-weight: 600;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: background 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            font-family: var(--font-stack);
+            font-size: 1rem;
+            background: var(--bg-alt);
+            transition: border 0.2s ease;
+            outline: none;
         }
 
-        .btn-submit:hover {
-            background: #d81b60;
-            box-shadow: 0 0 15px var(--accent-glow);
+        .input-group input:focus {
+            border-color: var(--accent);
+            background: #fff;
         }
 
-        /* TABELA DE QUEUE FUTURISTA */
-        .queue-table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        .queue-table th, .queue-table td {
-            padding: 14px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .queue-table th {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-muted);
-        }
-
-        .status-badge {
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .status-materials { background: rgba(0, 255, 204, 0.15); color: #00ffcc; }
-        .status-sculpting { background: rgba(255, 152, 0, 0.15); color: #ff9800; }
-        .status-furring { background: rgba(233, 30, 99, 0.15); color: #e91e63; }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--accent);
-            border-radius: 10px;
-        }
-
-        /* FOOTER DE LUXO COM REDES SOCIAIS */
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 60px 40px;
-            text-align: center;
-            background: rgba(0,0,0,0.2);
-        }
-
-        .footer-socials {
+        .form-nav {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 32px;
+            gap: 16px;
         }
 
-        .footer-socials a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
+        .form-nav .btn {
+            padding: 14px 32px;
+            min-width: 120px;
+            text-align: center;
         }
 
-        .footer-socials a:hover {
-            color: var(--accent);
-            text-shadow: 0 0 8px var(--accent-glow);
-        }
-
-        .footer-copy {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-family: 'Space Mono', monospace;
+        /* Responsividade */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 2.5rem; }
+            .social-grid { grid-template-columns: 1fr; }
+            .form-wrapper { padding: 24px; }
+            .section-title { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
-
-    <div class="dev-banner">⚙️ Production Preview v1.4 — Official Launch Under Construction ⚙️</div>
-
-    <header>
-        <div class="logo">Lunar Tail Co.</div>
-        <div class="theme-switcher">
-            <button class="theme-btn active" onclick="setTheme('dark')">Dark</button>
-            <button class="theme-btn" onclick="setTheme('light')">Light</button>
-            <button class="theme-btn" onclick="setTheme('rainbow')">Rainbow</button>
-        </div>
-    </header>
-
-    <section class="hero">
-        <h1>High Couture<br>Fursuits & Cosplays</h1>
-        <p>Premium bespoke wearable art tailored for the elite. Handcrafted in the United States with meticulous attention to detail and luxury materials.</p>
-    </section>
-
-    <h2 class="section-title">The Masterpieces</h2>
-    <section class="portfolio-container">
-        <div class="portfolio-grid">
+    <div class="container">
+        <header>
+            <!-- Aqui você pode colocar a imagem do escudo amarelo da Rota 702 -->
+            <!-- <img src="logo_rota702.png" alt="Rota 702" class="logo-img"> -->
             
-            <div class="portfolio-card">
-                <div class="image-container">
-                    <img src="images/fursuit1.jpg" alt="Shadow Obsidian Wolf">
-                </div>
-                <div class="card-overlay">
-                    <h3>Shadow Obsidian Wolf</h3>
-                    <p>Fullsuit Commission — Active Pose</p>
-                </div>
-            </div>
-
-            <div class="portfolio-card">
-                <div class="image-container">
-                    <img src="images/fursuit2.jpg" alt="Shadow Obsidian Wolf Front">
-                </div>
-                <div class="card-overlay">
-                    <h3>Shadow Obsidian Wolf</h3>
-                    <p>Fullsuit Commission — Front View</p>
-                </div>
-            </div>
-
-            <div class="portfolio-card">
-                <div class="image-container">
-                    <img src="images/fursuit3.jpg" alt="Obsidian Wolf Profile">
-                </div>
-                <div class="card-overlay">
-                    <h3>Obsidian Wolf Head</h3>
-                    <p>Premium Craftsmanship — Side Profile</p>
-                </div>
-            </div>
-
-            <div class="portfolio-card">
-                <div class="image-container">
-                    <img src="images/fursuit4.jpg" alt="Obsidian Wolf Expression">
-                </div>
-                <div class="card-overlay">
-                    <h3>Obsidian Wolf Head</h3>
-                    <p>Premium Craftsmanship — Front Expression</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <div class="dashboard-section">
-        
-        <div class="luxury-box">
-            <h2>Commission Application</h2>
-            <form id="commissionForm">
-                <div class="form-group">
-                    <label>Client Name</label>
-                    <input type="text" name="name" required placeholder="Your full name">
-                </div>
-                <div class="form-group">
-                    <label>Contact (Discord / Telegram)</label>
-                    <input type="text" name="contact" required placeholder="@yourhandle">
-                </div>
-                <div class="form-group">
-                    <label>Project Type</label>
-                    <select name="project_type" required>
-                        <option value="fullsuit_digi">Fullsuit (Digitigrade)</option>
-                        <option value="fullsuit_planti">Fullsuit (Plantigrade)</option>
-                        <option value="partial">Partial Suit</option>
-                        <option value="head_only">Head Only</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Character Concept & Details</label>
-                    <textarea name="details" rows="4" placeholder="Describe your character vision..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Reference Sheet Link</label>
-                    <input type="url" name="ref_sheet" placeholder="https://imgur.com/your-art">
-                </div>
-                <button type="submit" class="btn-submit">SUBMIT APPLICATION</button>
-            </form>
-        </div>
-
-        <div class="luxury-box">
-            <h2>Live Production Queue</h2>
-            <table class="queue-table">
-                <thead>
-                    <tr>
-                        <th>Client</th>
-                        <th>Project</th>
-                        <th>Current Stage</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Alpha_Wolf</td>
-                        <td>Fullsuit (Digi)</td>
-                        <td>
-                            <span class="status-badge status-furring">Furring</span>
-                            <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Kitsune_Tx</td>
-                        <td>Head Only</td>
-                        <td>
-                            <span class="status-badge status-sculpting">Sculpting</span>
-                            <div class="progress-bar"><div class="progress-fill" style="width: 45%;"></div></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>VixenLux</td>
-                        <td>Partial Suit</td>
-                        <td>
-                            <span class="status-badge status-materials">Materials</span>
-                            <div class="progress-bar"><div class="progress-fill" style="width: 15%;"></div></div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
+            <div class="logo-text">ROTA <span style="color:var(--accent)">702</span></div>
+            
+            <a href="#formulario" class="btn btn-outline">Reservar</a>
+        </header>
     </div>
 
-    <footer>
-        <div class="footer-socials">
-            <a href="https://instagram.com/lunartailco" target="_blank">Instagram</a>
-            <a href="https://x.com/lunartailco" target="_blank">Twitter / X</a>
-            <a href="https://t.me/lunartailco" target="_blank">Telegram</a>
-        </div>
-        <div class="footer-copy">
-            &copy; 2026 LUNAR TAIL CO. ALL RIGHTS RESERVED. POWERED BY HEKSEL STUDIO.
+    <main>
+        <!-- 1. HERO SECTION -->
+        <section id="hero">
+            <div class="container">
+                <h1>O destino premium para <br><span>Padel e Beach Tennis</span></h1>
+                <p>Em Alphaville, o Rota 702 une a alta performance esportiva à sofisticação de um clube social exclusivo. Venha viver a experiência completa com piscina, lounge, bar e a melhor estrutura para o seu jogo.</p>
+                <a href="#formulario" class="btn btn-primary">Agendar Agora</a>
+            </div>
+        </section>
+
+        <!-- 2. HISTÓRIA DA MARCA -->
+        <section id="historia">
+            <div class="container">
+                <h2 class="section-title">Viva o Lifestyle Rota 702</h2>
+                <p>Nascido em Alphaville para ser o ponto de encontro entre atletas e apaixonados por esporte, o Rota 702 vai além das quadras. Aqui, a excelência do tênis e do padel encontra um ambiente premium de convivência. Um espaço onde o suor encontra o sorriso, e as partidas se transformam em histórias.</p>
+            </div>
+        </section>
+
+        <!-- 3. O COMPLEXO (GRID) -->
+        <section class="section-padding">
+            <div class="container">
+                <h2 class="section-title">O Complexo</h2>
+                <p class="section-sub">Estrutura completa para elevar o seu jogo e o seu lazer.</p>
+                
+                <div class="grid-complexo">
+                    <div class="card-complexo">
+                        <div class="card-icon">🎾</div>
+                        <h3>Padel</h3>
+                        <p>Quadras de alto padrão com iluminação profissional, aquecimento e paredes de cristal para a melhor experiência.</p>
+                    </div>
+                    <div class="card-complexo">
+                        <div class="card-icon">🏖️</div>
+                        <h3>Beach Tennis</h3>
+                        <p>Clima de praia em Alphaville. Areia oficial, estrutura completa e aulas com os melhores instrutores da região.</p>
+                    </div>
+                    <div class="card-complexo">
+                        <div class="card-icon">🏋️</div>
+                        <h3>Academia & Performance</h3>
+                        <p>Equipamentos de elite e centro de preparação física para atletas que buscam performance, resistência e saúde.</p>
+                    </div>
+                    <div class="card-complexo">
+                        <div class="card-icon">🍹</div>
+                        <h3>Lounge, Bar & Piscina</h3>
+                        <p>O coração social da Rota 702. Piscina aquecida, área gourmet, churrasqueira e um bar descolado para relaxar pós-jogo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. FORMULÁRIO ROTA 702 -->
+        <section id="formulario">
+            <div class="container">
+                <h2 class="section-title" style="margin-bottom: 48px;">Reserve sua quadra</h2>
+                <div class="form-wrapper">
+                    <div class="step-indicators">
+                        <div class="step-dot active" data-step="1"></div>
+                        <div class="step-dot" data-step="2"></div>
+                        <div class="step-dot" data-step="3"></div>
+                    </div>
+
+                    <form id="rota702Form" onsubmit="return false;">
+                        <!-- STEP 1: Escolha das Redes -->
+                        <div class="form-step active" data-step="1">
+                            <h3>Conecte-se à Rota 702</h3>
+                            <p>Escolha sua plataforma preferida para receber atualizações e novidades do clube.</p>
+                            
+                            <div class="social-grid">
+                                <div class="social-option">
+                                    <input type="checkbox" id="social-instagram" name="social" value="instagram">
+                                    <label for="social-instagram">
+                                        <div class="emoji-icon">📸</div>
+                                        <span>Instagram</span>
+                                    </label>
+                                </div>
+                                <div class="social-option">
+                                    <input type="checkbox" id="social-tiktok" name="social" value="tiktok">
+                                    <label for="social-tiktok">
+                                        <div class="emoji-icon">🎵</div>
+                                        <span>TikTok</span>
+                                    </label>
+                                </div>
+                                <div class="social-option">
+                                    <input type="checkbox" id="social-gmail" name="social" value="gmail">
+                                    <label for="social-gmail">
+                                        <div class="emoji-icon">📧</div>
+                                        <span>Gmail</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-nav">
+                                <div></div>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(1)">Avançar</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: Dados Pessoais -->
+                        <div class="form-step" data-step="2">
+                            <h3>Dados de Contato</h3>
+                            <p>Preencha seus dados para finalizarmos sua reserva.</p>
+
+                            <div class="input-group">
+                                <label for="nome">Seu Nome</label>
+                                <input type="text" id="nome" placeholder="Digite seu nome completo">
+                            </div>
+
+                            <div class="input-group">
+                                <label for="telefone">Número de Telefone</label>
+                                <input type="tel" id="telefone" placeholder="(11) 99999-9999">
+                            </div>
+
+                            <div class="form-nav">
+                                <button type="button" class="btn btn-outline" onclick="prevStep(2)">Voltar</button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(2)">Avançar</button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: Agendamento -->
+                        <div class="form-step" data-step="3">
+                            <h3>Hora do Jogo</h3>
+                            <p>Defina o melhor horário para sua partida de Padel ou Beach Tennis.</p>
+
+                            <div class="input-group">
+                                <label for="data-horario">Data e Horário</label>
+                                <input type="datetime-local" id="data-horario">
+                            </div>
+
+                            <div class="form-nav">
+                                <button type="button" class="btn btn-outline" onclick="prevStep(3)">Voltar</button>
+                                <button type="submit" class="btn btn-primary" onclick="submitForm()">Reservar Agora</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align: center; padding: 40px 0; border-top: 1px solid #e8e8ed; margin-top: 40px; color: var(--text-muted); font-size: 0.9rem;">
+        <div class="container">
+            © 2026 Rota 702 • Alphaville • Esporte & Lifestyle
         </div>
     </footer>
 
     <script>
-        // CONFIGURAÇÃO DO WEBHOOK DO MAKE.COM
-        const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/lawfjw0n1ugn7ur6zh211tn63jgs035m';
+        // Lógica do Formulário Multi-etapas
+        let currentStep = 1;
+        const totalSteps = 3;
 
-        // LÓGICA DO INTERRUPTOR DE TEMAS
-        function setTheme(themeName) {
-            document.documentElement.setAttribute('data-theme', themeName);
-            
-            // Atualizar botões ativos
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText.toLowerCase() === themeName) {
-                    btn.classList.add('active');
+        function updateStepUI() {
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+                if(parseInt(step.dataset.step) === currentStep) {
+                    step.classList.add('active');
+                }
+            });
+
+            document.querySelectorAll('.step-dot').forEach(dot => {
+                const dotStep = parseInt(dot.dataset.step);
+                dot.classList.remove('active', 'done');
+                
+                if(dotStep === currentStep) {
+                    dot.classList.add('active');
+                } else if(dotStep < currentStep) {
+                    dot.classList.add('done');
                 }
             });
         }
 
-        // FORMULÁRIO POST WEBHOOK
-        document.getElementById('commissionForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData.entries());
-
-            try {
-                const response = await fetch(MAKE_WEBHOOK_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-                if(response.ok) {
-                    alert('Application submitted successfully to Lunar Tail Co!');
-                    e.target.reset();
-                } else {
-                    alert('Submission error. Please try again.');
+        function nextStep(current) {
+            if(current === 1) {
+                const checkboxes = document.querySelectorAll('input[name="social"]:checked');
+                if(checkboxes.length === 0) {
+                    alert("Por favor, selecione uma rede social para conectar e continuar.");
+                    return;
                 }
-            } catch (err) {
-                console.error(err);
-                alert('Connection failure. Check your internet.');
             }
-        });
+            if(current === 2) {
+                const nome = document.getElementById('nome').value;
+                const telefone = document.getElementById('telefone').value;
+                if(!nome || !telefone) {
+                    alert("Por favor, preencha seu nome e telefone.");
+                    return;
+                }
+            }
+
+            if(currentStep < totalSteps) {
+                currentStep++;
+                updateStepUI();
+            }
+        }
+
+        function prevStep(current) {
+            if(currentStep > 1) {
+                currentStep--;
+                updateStepUI();
+            }
+        }
+
+        function submitForm() {
+            const dataHora = document.getElementById('data-horario').value;
+            if(!dataHora) {
+                alert("Por favor, selecione uma data e horário.");
+                return;
+            }
+
+            alert("Reserva confirmada! Verifique seu WhatsApp/Email. A Rota 702 está te esperando!");
+            document.getElementById('rota702Form').reset();
+            currentStep = 1;
+            updateStepUI();
+        }
     </script>
 </body>
 </html>
