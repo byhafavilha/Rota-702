@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rota 702 by Jian | Complexo Esportivo de Elite</title>
     
+    <!-- ÍCONE DA ABA (FAVICON) -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <!-- Fonte Ultra Limpa (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,11 +77,7 @@
             white-space: nowrap;
         }
 
-        /* Classe para destacar o "2" em amarelo */
-        .brand-highlight {
-            color: var(--accent-yellow);
-            font-weight: 600;
-        }
+        .brand-highlight { color: var(--accent-yellow); font-weight: 600; }
         
         .nav-cta {
             border: 1px solid var(--primary-blue);
@@ -246,6 +245,42 @@
         .social-btn.selected { border-color: var(--primary-blue); background: rgba(30, 58, 138, 0.1); }
         .social-btn.selected i { color: var(--primary-blue); }
 
+        /* --- NOVO RODAPÉ (FOOTER) --- */
+        #footer {
+            background: var(--bg-white);
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+        }
+        #footer .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        #footer .dev-text {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        #footer .logos-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        #footer .footer-logo {
+            transition: var(--transition-smooth);
+            opacity: 0.6;
+            filter: grayscale(100%);
+        }
+        #footer .footer-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.05) translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             .container { padding: 0 16px; }
             #hero { padding: 100px 0 60px 0; min-height: 70vh; }
@@ -256,12 +291,13 @@
             #historia h2, #complexo h2, #transporte h2, #formulario h2 { font-size: 2.2rem; }
             .nav-logo { height: 30px; }
             .tabs .tab-btn { font-size: 0.8rem; padding: 0.4rem 1rem; }
+            #footer { padding: 3rem 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR COM TEXTO DESTACADO EM AMARELO -->
+    <!-- NAVBAR -->
     <header id="navbar">
         <div class="container nav-container">
             <div class="nav-brand">
@@ -325,7 +361,7 @@
         </div>
     </section>
 
-    <!-- SEÇÃO 4: TRANSPORTE (COM "2" DESTACADO NO TÍTULO) -->
+    <!-- SEÇÃO 4: TRANSPORTE -->
     <section id="transporte">
         <div class="container">
             <div class="header-area reveal">
@@ -496,6 +532,23 @@
             </div>
         </div>
     </section>
+
+    <!-- RODAPÉ (FOOTER) COM LOGOTIPOS DUPLOS -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="dev-text">Desenvolvido por:</p>
+                <div class="logos-wrapper">
+                    <a href="https://byhafavilha.github.io/Heksel-Studio/#pipeline" target="_blank" rel="noopener noreferrer" class="footer-link">
+                        <img src="logo-studio.png" alt="Heksel Studio" class="footer-logo" style="height: 30px; margin: 0 10px;">
+                    </a>
+                    <a href="https://byhafavilha.github.io/Heksel-Studio/#pipeline" target="_blank" rel="noopener noreferrer" class="footer-link">
+                        <img src="logo-genesis.png" alt="Heksel Genesis" class="footer-logo" style="height: 30px; margin: 0 10px;">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- SCRIPTS -->
     <script>
